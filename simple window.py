@@ -4,7 +4,7 @@ class MessageWindow():
     def __init__(self, title, size=None):
         # Create Root
         self.root = tk.Tk()
-        self.root.title("Event Reminder")
+        self.root.title(title)
         self.root.geometry(size) # Size in format "intxint"
 
         # Store Entry Data
