@@ -2,10 +2,11 @@ import tkinter as tk
 
 class MessageWindow():
     def __init__(self, title, size=None):
-        # Create Root
+        # Create root window and hide it until called.
         self.root = tk.Tk()
         self.root.title(title)
         self.root.geometry(size) # Size in format "intxint"
+        self.root.withdraw()
 
         # Store Entry Data
         self.entry_data = []
@@ -38,8 +39,15 @@ class MessageWindow():
         # print(data)
 
 
+    def hide_window(self):
+        """Hides window from screen, stopping the event loop."""
+        self.root.quit()
+        self.root.withdraw()
+
     def display_window(self):
-        """Renders window to the screen"""
+        """Shows window on screen, restarting the event loop."""
+        self.root.update()
+        self.root.deiconify()
         self.root.mainloop()
 
 
@@ -50,6 +58,7 @@ def main():
     window.create_label("Entry 2:", 20)
     window.create_entry()
     window.create_button("Submit", command=window.get_entry_data)
+    input()
     window.display_window()
 
 if __name__ == "__main__":
